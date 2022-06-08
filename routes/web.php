@@ -20,3 +20,4 @@ Route::get('/', function () {
 //Route::get('/student',[StudentController::class,'index'])->name('student.index');
 
 Route::resource('student', StudentController::class);
+Route::post('/student/email-validate', [StudentController::class, 'check_email'])->name('student.email.validate');

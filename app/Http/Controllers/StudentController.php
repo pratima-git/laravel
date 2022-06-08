@@ -97,4 +97,32 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->route('student.index');
     }
+
+    /**
+     * 
+     *  @return \Illuminate\Http\Response
+     */
+    public function check_email(AjaxUserExistsRequest $request)
+    {
+        $email = $request->input('email'); // Uta data mah j name dinxa yeta input mah tyai hunxa
+        $status = Student::where('email', '=', $email)->exists();
+        if($status == true){ //yo sajilo hunxa vanerw lekheko haii
+            return response()->json([
+                'success'=> false,
+                'message'=> 'This email already exists'
+            ]);
+        }
+        else{ // Yoo pani
+            // Aba run hunxa hola
+            //tyo jun jun edit garey xam ni arkai color axa
+            // Tyo tmle git mah halerw hoo
+            // upload gare paxi yoo yoo heheheh
+        return response()->json([
+            'success'=> true,
+            'message'=>'This email is available'
+        ]);
+    }
+    }
+    
+    
 }
